@@ -1,0 +1,35 @@
+"""
+Math 482 SP2020 Final Project
+Adwitiya Singh: 109772141
+Elijah Razavi: 10956611
+Irmuun Zamilan: 201105079
+"""
+
+
+For every puzzle:
+   if every colour occurs only thrice:
+   		Call the solve method on it
+   		if the solve returns false:
+   	 		//This means that there exists a solution but it requires flipping one or more slices
+			Call minimum obstacle from the smallest size until we find one
+		if solve returns true:
+   	 		Print the answer
+   	if colours occurs more than thrice:
+   	 	Get a list of all colours that occur more than 3 times
+   	 	For every colour that occurs more than thrice:
+   	 		Get a list of all the slices that contain that colour
+   	 		Those slices are a minimum obstacles
+   	 		If all the minumum obstacles returned are of size n:
+   	 			Try and find minimum obstalces of size 2 to n in the puzzle:
+   	 				If they exist, then they're the minimum obstacle
+
+
+How solve works
+   Solve is recursive and tries to insert blocks until it finds a conflict at which point it returns to the previous call of the recrusive funtion and rotates the previous slice and then tries inserting again.
+
+   If a slice has been rotates three times and there are still obstacles, solve returns false.
+
+How minimum obstacle works:
+   To find all minimum obstacles of size n:
+       We find all subsets of slices in the puzzle of size n and see if any of those are unsolvable:
+           If any of those are unsolvabe then it's a minimum obstacle
